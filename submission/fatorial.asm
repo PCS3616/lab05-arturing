@@ -14,6 +14,7 @@ LD N            ; Carrega N no Acumulador
 JZ /212         ; Pula para o endereço 0x212 se o Acumulador for nulo
 MM AUX1         ; Carrega o valor do Acumulador na Memória Auxiliar 1
 ML AUX2         ; Multiplica o valor do Acumulador pelo valor armazenado na Memória Auxiliar 2
+MM AUX2         ; Carrega o Resultado da Multiplicacao na Memória Auxiliar 2
 LD AUX1         ; Carrega o valor da Memória Auxiliar 1 no Acumulador
 SB ONE          ; Subtrai o valor do Acumulador por 1
 JP /204         ; Volta para a instrução no endereço 0x204
