@@ -1,9 +1,9 @@
 START   ML TWO         ; AC *= 2
         AD ONE         ; AC += 1
-        AD TEMP_SUM    ; AC += TEMP_SUM
-        MM TEMP_SUM    ; TEMP_SUM  = AC
-        LD /102        ; MEM[TEMP_ADDRESS] = AC 
-        MM /008        ; AC = TEMP_ADDRESS
+        AD TEMP_SUM    ; AC += mem[TEMP_SUM]
+        MM TEMP_SUM    ; mem[TEMP_SUM]  = AC
+        MM /102        ; MEM[TEMP_ADDRESS] = AC 
+        LD /008        ; AC = TEMP_ADDRESS
         AD TWO         ; AC += 2 
         MM /008        ; TEMP_ADDRESS = AC
         LD TOTAL_N     ; AC = 0x03F
@@ -11,8 +11,8 @@ START   ML TWO         ; AC *= 2
         JZ END         ; if (AC == 0) jump to END
         LD CURRENT_N   ; AC = CURRENT_N
         AD ONE         ; AC += 1
-        MM CURRENT_N   ; CURRENT_N = AC 
-        JP START       ; Jump to START
+        MM CURRENT_N   ; CURRENT_N = AC
+        JP START       ; Volta para o início
 END     HM =0          ; Finaliza programa
 
 @ /100          ; Guarda os resultados a partir daqui 
