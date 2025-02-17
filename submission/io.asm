@@ -6,23 +6,17 @@ GD /000 ; Lê 2 bytes de Y no terminal
 MM /102 ; Guarda o valor de Y em /100
 LD X    ; AC = X
 SB SUB1 ; AC -= /3030
-MM /210
 MM X    ; X = AC 
 LD Y    ; AC = Y
 SB SUB1 ; AC -= /3030
-MM /212
 AD X    ; AC += X
-MM /200
 MM RES  ; RES = AC
-DV SHIFT ; AC  >> 1
-MM /202
-ML SHIFT ; AC >> 3 bytes
-MM /204
-MM TEMP 
-LD RES 
-SB TEMP
+DV SHIFT ; AC >> 1 Byte
+ML SHIFT ; AC << 1 Byte
+MM TEMP ; TEMP = AC 
+LD RES  ; AC = X+Y
+SB TEMP ; AC -= TEMP
 SB SUB2 ; AC -= A
-MM /206
 JN LSB_LESS ; Pula para o final se LSB de AC < A
 LD RES  ; AC = RES
 SB SUB2 ; AC-= A
