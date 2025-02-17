@@ -14,11 +14,15 @@ MM /212
 AD X    ; AC += X
 MM /200
 MM RES  ; RES = AC
-ML SHIFT ; AC << 3 bytes
-DV SHIFT ; AC >> 3 bytes
+DV SHIFT ; AC  >> 1
 MM /202
-SB SUB2 ; AC -= A
+ML SHIFT ; AC >> 3 bytes
 MM /204
+MM TEMP 
+LD RES 
+SB TEMP
+SB SUB2 ; AC -= A
+MM /206
 JN LSB_LESS ; Pula para o final se LSB de AC < A
 LD RES  ; AC = RES
 SB SUB2 ; AC-= A
@@ -33,8 +37,8 @@ HM /000 ; Para a rotina
 X k =0
 Y k =0
 SUB1 k /3030
-DIV k =16
 SUB2 k /A
 ADD k /100
-SHIFT k /1000
+SHIFT k /10
+TEMP k /0
 RES k =0
